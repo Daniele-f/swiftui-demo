@@ -1,9 +1,9 @@
-//
-//  ScannerView.swift
-//  Demo
-//
-//  Created by Administrator on 27/05/2022.
-//
+	//
+	//  ScannerView.swift
+	//  Demo
+	//
+	//  Created by Administrator on 27/05/2022.
+	//
 
 import SwiftUI
 import CodeScanner
@@ -25,31 +25,34 @@ struct ScannerView: View {
 			Section (header: Text("QR Scanner")) {
 				HStack {
 					Spacer()
-					VStack {
-						ZStack(alignment: .center) {
-							scannerSheet
-							
-							ScanOverlayView()
-							
-						} // ZStack
-						.frame(width: 260, height: 260)
-						.cornerRadius(30)
-						.padding(.top, 10)
+					
+					ZStack (alignment: .center){
+						scannerFrame
 						
-						Text(scannedCode)
+						ScanOverlayView()
 						
-					} // VStack
+					} /// ZStack
+					.background(.green) //For testing purpose
+					.frame(width: 260, height: 260)
+					.cornerRadius(30)
+					.padding(.top, 10)
+					.padding(.bottom, 10)
+					.background(.red) //For testing purpose
+					
 					Spacer()
-				} // HStack
-				.listRowSeparator(.hidden)
-			} // Section
+				} /// HStack
+			} /// Section
+			
+			Section (header: Text("output")) {
+				Text(scannedCode)
+			}
 		} // List
 	}
 	
-	// MARK: - Functions
-		//  CodeScanner by TwoStraws
+		// MARK: - Functions
+		//  CodeScanner by Paul Hudson @twostraws
 		//  https://github.com/twostraws/CodeScanner
-	var scannerSheet : some View {
+	var scannerFrame : some View {
 		return CodeScannerView(
 			codeTypes: [.qr,
 						.code128, .code39, .code93],
@@ -62,7 +65,7 @@ struct ScannerView: View {
 					self.isShowingScanner = false
 				}
 			}
-		) // CodeScanner
+		) /// CodeScanner
 	}
 }
 
