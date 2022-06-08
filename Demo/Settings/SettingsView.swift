@@ -54,7 +54,7 @@ struct SettingsView: View {
 						TextField("Text", text: $text)
 							.textFieldStyle(RoundedBorderTextFieldStyle())
 					} // HStack
-					Button("Save") {
+					Button("Show  info") {
 						showAlert = true
 					}.alert(Text("Settings"), isPresented: $showAlert) {
 						Button("Option: \(selectedType)") {}
